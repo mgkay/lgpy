@@ -1,0 +1,1183 @@
+#!/usr/bin/env python
+#author : nabeel913 | Nabeel Mehdi
+# coding: utf-8
+
+# In[1]:
+
+n=1
+
+
+# In[2]:
+
+
+n=[1,2,3]
+
+
+# In[3]:
+
+
+import numpy as np
+
+
+# In[4]:
+
+
+A = np.array([(1,2,3,4), (5,6,7,8)])
+A
+
+
+# In[5]:
+
+
+a=np.arange(1,6)
+a
+
+
+# In[6]:
+
+
+np.arange(1,6,2)
+
+
+# In[7]:
+
+
+np.arange(10,1,-2)
+
+
+# In[8]:
+
+
+np.ones((5))
+
+
+# In[9]:
+
+
+np.ones((5,1))
+
+
+# In[10]:
+
+
+np.zeros((5))
+
+
+# In[11]:
+
+
+np.random.random((1,3))
+
+
+# In[12]:
+
+
+np.random.random((1,3))
+
+
+# In[13]:
+
+
+np.random.permutation(5)
+
+
+# In[14]:
+
+
+ans=np.identity(3)
+ans
+
+
+# In[15]:
+
+
+get_ipython().run_line_magic('whos', '')
+
+
+# In[16]:
+
+
+A
+
+
+# In[17]:
+
+
+A[:,:]
+
+
+# In[18]:
+
+
+A[0,1] #In python series begins from 0, so row zero, element 1 is 2.
+
+
+# In[19]:
+
+
+A[0,:]
+
+
+# In[20]:
+
+
+A[:,0]
+
+
+# In[21]:
+
+
+A[:,[0,2]]
+
+
+# In[22]:
+
+
+A[:,-1]
+
+
+# In[23]:
+
+
+A[:,-2]
+
+
+# In[24]:
+
+
+B=A[:,-2:]
+B
+
+
+# In[25]:
+
+
+B.diagonal()
+
+
+# In[26]:
+
+
+a=np.arange(1,6)
+a
+
+
+# In[27]:
+
+
+a[1]=6
+a
+
+
+# In[28]:
+
+
+a[[0,2]]=0
+a
+
+
+# In[29]:
+
+
+a[[0,2]]=[7,8]
+a
+
+
+# In[30]:
+
+
+A[0,1]=100
+A
+
+
+# In[31]:
+
+
+a=np.delete(a,2)
+a
+
+
+# In[32]:
+
+
+a=np.delete(a,[0,3])
+a
+
+
+# In[33]:
+
+
+A=np.delete(A,(1),axis=1)
+A
+
+
+# In[34]:
+
+
+np.transpose(A)
+
+
+# In[35]:
+
+
+np.fliplr(A)
+
+
+# In[36]:
+
+
+np.flipud(A)
+
+
+# In[37]:
+
+
+np.concatenate((A,B),axis=1)
+
+
+# In[38]:
+
+
+np.column_stack((A,np.array([10,20])))
+
+
+# In[39]:
+
+
+np.vstack((np.column_stack((A,np.array([10,20]))),np.arange(30,70,10)))
+
+
+# In[40]:
+
+
+A=A.flatten('F').reshape((A.size,1))
+A
+
+
+# In[41]:
+
+
+A.T
+
+
+# In[42]:
+
+
+A=A.reshape((2,3),order='F')
+A
+
+
+# In[43]:
+
+
+A+2
+
+
+# In[44]:
+
+
+B=2*A
+B
+
+
+# In[45]:
+
+
+np.multiply(A,B)
+
+
+# In[46]:
+
+
+np.dot(A,B)
+
+
+# In[48]:
+
+
+C=np.dot(A,B.T)
+C
+
+
+# In[49]:
+
+
+C=np.dot(A.T,B)
+C
+
+
+# In[50]:
+
+
+a = np.arange(1,4)
+a
+
+
+# In[51]:
+
+
+np.dot(a,a.T)
+
+
+# In[52]:
+
+
+np.dot(A,a.T)
+
+
+# In[53]:
+
+
+C=A+B
+C
+
+
+# In[54]:
+
+
+a+A
+
+
+# In[55]:
+
+
+b=np.arange(4,7).reshape(3,1)
+b
+
+
+# In[56]:
+
+
+b+A
+
+
+# In[58]:
+
+
+b.T+A
+
+
+# In[59]:
+
+
+a=np.arange(1,6)
+a
+
+
+# In[60]:
+
+
+np.sum(a)
+
+
+# In[61]:
+
+
+np.cumsum(a)
+
+
+# In[62]:
+
+
+A
+
+
+# In[63]:
+
+
+np.sum(A)
+
+
+# In[64]:
+
+
+np.sum(A,axis=0)
+
+
+# In[65]:
+
+
+np.sum(A,axis=1)
+
+
+# In[66]:
+
+
+A=A[0,:]
+A
+
+
+# In[67]:
+
+
+sum(A) #native python sum function
+
+
+# In[68]:
+
+
+np.sum(A) #numpy sum function
+
+
+# In[69]:
+
+
+x=np.array([3,1])
+x
+
+
+# In[70]:
+
+
+P=np.array([[1,1],[6,1],[6,5]])
+P
+
+
+# In[71]:
+
+
+x-P
+
+
+# In[72]:
+
+
+(x-P)**2
+
+
+# In[73]:
+
+
+np.sum((x-P)**2, axis=1)
+
+
+# In[74]:
+
+
+d=np.sqrt(np.sum((x-P)**2, axis=1))
+d
+
+
+# In[75]:
+
+
+def mydist(x,P):
+    d=np.sqrt(np.sum((x-P)**2, axis=1))
+    return d
+
+
+# In[76]:
+
+
+mydist(x,P)
+
+
+# In[77]:
+
+
+X=np.concatenate((x,x))
+PP=np.concatenate((P,P),axis=1)
+mydist(X,PP)
+
+
+# In[78]:
+
+
+n=np.size(x)
+n
+
+
+# In[79]:
+
+
+np.size(P,axis=1)
+
+
+# In[80]:
+
+
+def mydist(x,P):
+    '''MYDIST Euclidean distance from x to P.
+    d = mydist(x,P)
+    x = n-element vector single point
+    P = m x n matrix of n points
+    d = m-element vector, where d(i) =
+    distance from x to P(i,:)'''
+    d=np.sqrt(np.sum((x-P)**2, axis=1))
+    return d
+
+
+# In[81]:
+
+
+help(mydist)
+
+
+# In[82]:
+
+
+sumd=sum(mydist(x,P))
+sumd
+
+
+# In[83]:
+
+
+int(sumd)
+
+
+# In[84]:
+
+
+def sumMydist():
+    return sum(mydist(x,P))
+
+sumMydist()
+
+
+# In[85]:
+
+
+def sumMydist(x):
+    return sum(mydist(x,P))
+
+
+# In[87]:
+
+
+sumMydist(np.array([6,1]))
+
+
+# In[88]:
+
+
+sumMydist([6,1]) #Python list can be used in place of numpy 1-D array
+
+
+# In[89]:
+
+
+sumMydist([4,3])
+
+
+# In[90]:
+
+
+round(sumMydist([4,3]),4)
+
+
+# In[91]:
+
+
+from scipy import optimize
+
+x0=[0,0]
+x=optimize.fmin(sumMydist, x0)
+x
+
+
+# In[92]:
+
+
+x=optimize.fmin(sumMydist, [10,5])
+x
+
+
+# In[93]:
+
+
+a=np.array([4,0,-2,7,0])
+a
+
+
+# In[94]:
+
+
+a>0
+
+
+# In[95]:
+
+
+(a==7)
+
+
+# In[96]:
+
+
+1*(a==7)
+
+
+# In[97]:
+
+
+1*(a!=0)
+
+
+# In[98]:
+
+
+1*((a >= 0)&(a<= 4))
+
+
+# In[99]:
+
+
+1*((a<0) | (a>4))
+
+
+# In[100]:
+
+
+1*~((a<0) | (a>4))
+
+
+# In[101]:
+
+
+~1*((a<0) | (a>4)) #Different result with position of ~
+
+
+# In[102]:
+
+
+a[a>0]
+
+
+# In[103]:
+
+
+a[a==7]=8
+a
+
+
+# In[104]:
+
+
+a[a!=0]=a[a!=0]+1
+a
+
+
+# In[105]:
+
+
+#pandas library is the best tool for creating cell array and structures. 
+#However we can use python nested lists to achieve the same functionality.
+c=[[10,20,30],[40],[50,60]]
+c
+
+
+# In[106]:
+
+
+c[0]
+
+
+# In[107]:
+
+
+c[0][0]
+
+
+# In[108]:
+
+
+c[0].append(35)
+c[0]
+
+
+# In[109]:
+
+
+c.append(list(range(1,11,2)))
+c
+
+
+# In[110]:
+
+
+t=['Miami','Detroit','Boston']
+t
+
+
+# In[111]:
+
+
+t.sort()
+t
+
+
+# In[112]:
+
+
+xP=[x,P]
+xP
+
+
+# In[113]:
+
+
+d=mydist(*xP) #mydist(xP[0],xP[1])  will also work
+d
+
+
+# In[114]:
+
+
+c=np.empty([1,3]) #creates array with random numbers
+c
+
+
+# In[115]:
+
+
+c[:]=0
+c
+
+
+# In[116]:
+
+
+c[:,0:3]=[1,2,3]
+c
+
+
+# In[117]:
+
+
+class s:
+    pass
+
+
+# In[118]:
+
+
+s1=s()
+s1.Name='Mike'
+vars(s1)
+
+
+# In[119]:
+
+
+s1.Age=44
+vars(s1)
+
+
+# In[120]:
+
+
+s2=s()
+s2.Name='Bill'
+s2.Age=40
+vars(s2)
+
+
+# In[121]:
+
+
+S=[s1,s2]
+for i in S:
+    print(i.Name)
+
+
+# In[122]:
+
+
+class s:
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+
+s1,s2=s('Mike',44),s('Bill',40)
+vars(s1),vars(s2)
+
+
+# In[123]:
+
+
+#Using pandas
+import pandas as pd
+s=pd.DataFrame(columns=['Name','Age'])
+s=s.append(pd.Series(["Mike",44],index=s.columns), ignore_index=True)
+s=s.append(pd.Series(["Bill",40],index=s.columns), ignore_index=True)
+s
+
+
+# In[124]:
+
+
+Names=s.Name
+Names
+
+
+# In[125]:
+
+
+Ages=s.Age
+Ages
+
+
+# In[126]:
+
+
+D3 = np.array([(1,2,3),(4,5,6)])
+D3
+
+
+# In[127]:
+
+
+D3=np.arange(1,13).reshape(2,2,3)
+D3
+
+
+# In[128]:
+
+
+D3[0,:,:]
+
+
+# In[129]:
+
+
+D3[1,:,:]
+
+
+# In[130]:
+
+
+D3[1,0,2]
+
+
+# In[131]:
+
+
+D3[:,:,0].T
+
+
+# In[132]:
+
+
+D2=D3[:,:,0].T.reshape(2,2)
+D2
+
+
+# In[133]:
+
+
+for i in range(1,4):
+    print(i)
+
+
+# In[134]:
+
+
+for i in range(5,0,-2):
+    print(i)
+
+
+# In[135]:
+
+
+chararray="abc"
+for i in chararray:
+    print(i)
+
+
+# In[136]:
+
+
+c = [[10,20,30],[40],[50,60]]
+c+1
+
+
+# In[138]:
+
+
+for sub in c:
+    for i in sub:
+        sub[sub.index(i)]=(i+1)
+c
+
+
+# In[139]:
+
+
+n=3
+if n>0:
+    print('Positive value')
+elif n<0:
+    print('Negative value')
+else:
+    print('Zero')
+
+
+# In[140]:
+
+
+while n>0:
+    n=n-1
+    print(n)
+
+
+# In[141]:
+
+
+done=True
+while done:
+    n=n+1
+    print(n)
+    if n>=3:
+        done=False
+        
+
+
+# In[142]:
+
+
+a=np.array([5,0,-1,9,0])
+(a>0)*1
+
+
+# In[143]:
+
+
+np.any(a>0)*1
+
+
+# In[144]:
+
+
+np.all(a>0)*1
+
+
+# In[145]:
+
+
+np.random.seed(123)
+s=np.random.random(5)
+s
+
+
+# In[146]:
+
+
+1*(s>0.5)
+
+
+# In[147]:
+
+
+1*(s>0.5)*2
+
+
+# In[148]:
+
+
+(1*(s>0.5)*2)-1
+
+
+# In[149]:
+
+
+d=np.cumsum((1*(s>0.5)*2)-1)
+d
+
+
+# In[150]:
+
+
+np.random.seed(123)
+s=np.random.random(100)
+d=np.cumsum((1*(s>0.5)*2)-1)
+import matplotlib.pyplot as plt
+plt.plot(d)
+plt.show()
+
+
+# In[151]:
+
+
+dt=[]
+np.random.seed(123)
+for i in range(1,101):
+    d=np.cumsum(((np.random.random(1000)>0.5)*2)-1)
+    dt.append((d[-1]))
+print(np.mean(np.abs(dt)))
+
+
+# In[152]:
+
+
+a=np.array([5,0,-1,9,0])
+ispos=a>0
+ispos*1
+
+
+# In[153]:
+
+
+a[ispos]
+
+
+# In[154]:
+
+
+idxpos=(np.argwhere(a>0))
+idxpos.tolist()
+
+
+# In[155]:
+
+
+a[idxpos].tolist()
+
+
+# In[156]:
+
+
+s=['Miami','Detroit','Boston']
+print(s.index('Detroit'))
+
+
+# In[157]:
+
+
+S=[i.lower() for i in s]
+search="bOStoN"
+print(S.index(search.lower()))
+
+
+# In[158]:
+
+
+a=np.array([5,0,-1,9,0])
+idxa=np.argsort(a)
+sa=a[idxa]
+sa.tolist()
+
+
+# In[159]:
+
+
+idxa.tolist()
+
+
+# In[160]:
+
+
+idx=[0,1,0]
+a[idx].tolist()
+
+
+# In[161]:
+
+
+idxmina,mina=np.argmin(a),min(a)
+mina
+
+
+# In[162]:
+
+
+idxmina
+
+
+# In[163]:
+
+
+np.random.seed(123)
+n=3
+XY=np.random.random([n,2])
+XY
+
+
+# In[164]:
+
+
+XY=XY*2 -1
+XY
+
+
+# In[165]:
+
+
+isin=1*(np.sum((XY**2),1)<1)
+isin
+
+
+# In[166]:
+
+
+m=sum(isin)
+m
+
+
+# In[167]:
+
+
+piestimate=4*m/n
+piestimate
+
+
+# In[168]:
+
+
+n=5000;
+XY=np.random.random([n,2])
+isin=(np.sum((XY**2),1)<1)
+m=sum(isin)
+piestimate=4*m/n
+piestimate
+
+
+# In[169]:
+
+
+a=XY[isin]
+plt.plot(a[:,0],a[:,1],'b.')
+plt.show()
+
+
+# In[170]:
+
+
+A=np.array([[0,0,0,30],[10,0,20,0]])
+
+
+# In[171]:
+
+
+from scipy import sparse
+
+
+# In[172]:
+
+
+sA = sparse.csr_matrix(A) 
+print(sA)
+
+
+# In[173]:
+
+
+B=sparse.csr_matrix.todense(sA)
+B
+
+
+# In[174]:
+
+
+r = [2,2,1] # x_coordinate
+c = [1,3,4] # y_coordinate
+data = [10,20,30]
+m = sparse.coo_matrix((data, (r, c)))
+print(m)
+
+
+# In[ ]:
+
+
+
+
